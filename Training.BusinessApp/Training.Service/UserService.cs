@@ -32,11 +32,15 @@ namespace Training.Service
             var validationresult = validator.Validate(user);
             if (!validationresult.IsValid) return null;
             SendWelcomeEmail(user);
+            SetProjectInfoData(user);
             var result = _userRepository.Add(new User() {Email = user.Email, Login = user.Login, Modified = DateTime.Now});
             user.Id = result.Id;
             return user;
         }
-        
+        private string SetProjectInfoData(UserDTO user)
+        {
+            return user.Login+"#;#"+"11"+"#;#"+"ProjName";
+        }
         public void SendWelcomeEmail(UserDTO user)
         {
             var message = new EmailDTO();
@@ -44,6 +48,7 @@ namespace Training.Service
             message.Subject = "Witamy w serwisie";
             message.To = user.Email;
             _emailService.SendEmail(message);
+
         }
     }
 }

@@ -17,7 +17,14 @@ namespace Training.BusinessApp
             var userService = kernel.Get<IUserService>();
             var user = userService.Save(new UserDTO() {Email = "Test@test.pl"});
             var userdb = userService.GetById(user.Id);
-            Console.WriteLine(userdb.Email);
+            if (userdb != null)
+            {
+                Console.WriteLine(user.Email);
+            }
+            else
+            {
+                Console.WriteLine("Brak usera w bazie");
+            }
 
         }
 

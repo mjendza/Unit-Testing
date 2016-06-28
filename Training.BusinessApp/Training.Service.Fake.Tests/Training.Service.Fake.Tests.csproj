@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D430E28A-2F12-4509-A778-2EF801F45F73}</ProjectGuid>
+    <ProjectGuid>{253CC06A-AF03-4A12-B510-1CEEF6BEE74C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Training.BusinessApp.Tests</RootNamespace>
-    <AssemblyName>Training.BusinessApp.Tests</AssemblyName>
+    <RootNamespace>Training.Service.Fake.Tests</RootNamespace>
+    <AssemblyName>Training.Service.Fake.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -16,6 +16,7 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,11 +36,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="mscorlib.4.0.0.0.Fakes">
+      <HintPath>FakesAssemblies\mscorlib.4.0.0.0.Fakes.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.4.0.0.0.Fakes">
+      <HintPath>FakesAssemblies\System.4.0.0.0.Fakes.dll</HintPath>
+    </Reference>
+    <Reference Include="Training.Repository.Fakes">
+      <HintPath>FakesAssemblies\Training.Repository.Fakes.dll</HintPath>
+    </Reference>
+    <Reference Include="Training.Service.Fakes">
+      <HintPath>FakesAssemblies\Training.Service.Fakes.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -47,14 +59,62 @@
         <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
       </ItemGroup>
     </When>
-    <Otherwise />
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="DateTimeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserReposiotryTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <Fakes Include="Fakes\System.fakes" />
+  </ItemGroup>
+  <ItemGroup>
+    <Fakes Include="Fakes\mscorlib.fakes" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Training.DataAccess\Training.DataAccess.csproj">
+      <Project>{1c5eb7a6-901a-4cb3-a854-1e1c1c64ba4f}</Project>
+      <Name>Training.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Training.Repository\Training.Repository.csproj">
+      <Project>{ad2701a8-8e2d-45b4-80af-69a2255e7d9e}</Project>
+      <Name>Training.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Training.Service\Training.Service.csproj">
+      <Project>{553eb393-e9c1-4582-80a6-b2b3280dd7a5}</Project>
+      <Name>Training.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Fakes Include="Fakes\Training.Repository.fakes" />
+  </ItemGroup>
+  <ItemGroup>
+    <Fakes Include="Fakes\Training.Service.fakes" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FakesAssemblies\mscorlib.4.0.0.0.Fakes.dll" />
+    <Content Include="FakesAssemblies\mscorlib.4.0.0.0.Fakes.xml" />
+    <Content Include="FakesAssemblies\System.4.0.0.0.Fakes.dll" />
+    <Content Include="FakesAssemblies\System.4.0.0.0.Fakes.xml" />
+    <Content Include="FakesAssemblies\Training.Repository.Fakes.dll" />
+    <Content Include="FakesAssemblies\Training.Repository.Fakes.xml" />
+    <Content Include="FakesAssemblies\Training.Service.Fakes.dll" />
+    <Content Include="FakesAssemblies\Training.Service.Fakes.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FakesAssemblies\mscorlib.4.0.0.0.Fakes.fakesconfig" />
+    <None Include="FakesAssemblies\mscorlib.4.0.0.0.Fakes.messages" />
+    <None Include="FakesAssemblies\System.4.0.0.0.Fakes.fakesconfig" />
+    <None Include="FakesAssemblies\System.4.0.0.0.Fakes.messages" />
+    <None Include="FakesAssemblies\Training.Repository.Fakes.fakesconfig" />
+    <None Include="FakesAssemblies\Training.Repository.Fakes.messages" />
+    <None Include="FakesAssemblies\Training.Service.Fakes.fakesconfig" />
+    <None Include="FakesAssemblies\Training.Service.Fakes.messages" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

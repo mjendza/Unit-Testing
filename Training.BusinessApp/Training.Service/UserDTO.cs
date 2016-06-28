@@ -18,7 +18,7 @@ namespace Training.Service
     {
         public UserValidator()
         {
-            RuleFor(x => x.Email).EmailAddress();
+            RuleFor(x => x.Email).EmailAddress().NotNull();
         }
     }
 }

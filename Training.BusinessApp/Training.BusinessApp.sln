@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Training.Repository", "Trai
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Training.Repository.Tests", "Training.Repository.Tests\Training.Repository.Tests.csproj", "{23B789D1-47C7-4410-9CB0-C009EC227973}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Training.Service.FakeAssembly.Tests", "Training.Service.Fake.Tests\Training.Service.FakeAssembly.Tests.csproj", "{253CC06A-AF03-4A12-B510-1CEEF6BEE74C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Training.Service.FakeAssembly.Tests", "Training.Service.Fake.Tests\Training.Service.Fake.Tests.csproj", "{253CC06A-AF03-4A12-B510-1CEEF6BEE74C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{367EB8A8-0661-4817-A56C-CEAF8870B793}"
 EndProject
